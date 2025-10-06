@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financeiro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="logo-placeholder"></div>
+            <div class="user-info">
+                <span>Bem vindo, Usuário</span>
+                <a href="index.html" class="logout-button">Sair</a>
+            </div>
+        </header>
+        <section class="summary-container">
+            <div class="summary-main">
+                <h2>Setembro 2025</h2>
+                <div class="summary-balance">
+                    <p>R$ 2.850,00 <span class="label">Entrada</span></p>
+                    <p>R$ 1.093,00 <span class="label">Saída</span></p>
+                </div>
+            </div>
+            <div class="summary-cards">
+                <div class="card">
+                    <p class="card-title">Contas</p>
+                    <p class="card-subtitle">Categoria com Maior Gasto</p>
+                </div>
+                <div class="card">
+                    <p class="card-title">6 Registros</p>
+                    <p class="card-subtitle">Entradas Deste Mês</p>
+                </div>
+            </div>
+            <button class="add-expense-button" id="openModalBtn">Adicionar Gasto</button>
+        </section>
+        <section class="expenses-container">
+            <h3>Meus Gastos</h3>
+            <table class="expenses-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Valor (R$)</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="expenses-tbody">
+                    <tr>
+                        <td class="col-name">Restaurante</td>
+                        <td class="col-category">Alimentação</td>
+                        <td class="col-value">38,00</td>
+                        <td class="col-date">2025-09-08</td>
+                        <td class="actions">
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Salário</td>
+                        <td class="col-category">Ganho</td>
+                        <td class="col-value income">+ 2850,00</td>
+                        <td class="col-date">2025-09-10</td>
+                        <td class="actions">
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-name">Aluguel</td>
+                        <td class="col-category">Contas</td>
+                        <td class="col-value">540,00</td>
+                        <td class="col-date">2025-09-10</td>
+                        <td class="actions">
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">🗑️</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div class="modal-overlay" id="addExpenseModal">
+        <div class="modal-content">
+            <h3>Adicionar Gasto</h3>
+            <form id="addExpenseForm">
+                <div class="modal-form-group">
+                    <label for="g-nome">Nome</label>
+                    <input type="text" id="g-nome" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="g-cat">Categoria</label>
+                    <input type="text" id="g-cat" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="g-val">Valor</label>
+                    <input type="text" id="g-val" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="g-data">Data</label>
+                    <input type="date" id="g-data" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn-cancel" id="closeModalBtn">Cancelar</button>
+                    <button type="submit" class="modal-btn-save">Salvar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
