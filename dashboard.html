@@ -11,30 +11,37 @@
         <header class="dashboard-header">
             <div class="logo-placeholder"></div>
             <div class="user-info">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 <span>Bem vindo, Usuário</span>
                 <a href="index.html" class="logout-button">Sair</a>
             </div>
         </header>
+
         <section class="summary-container">
             <div class="summary-main">
                 <h2>Setembro 2025</h2>
                 <div class="summary-balance">
-                    <p>R$ 2.850,00 <span class="label">Entrada</span></p>
-                    <p>R$ 1.093,00 <span class="label">Saída</span></p>
+                    <p id="total-entrada">R$ 2.850,00 <span class="label">Entrada</span></p>
+                    <p id="total-saida">R$ 1.093,00 <span class="label">Saída</span></p>
                 </div>
             </div>
             <div class="summary-cards">
-                <div class="card">
+                <div class="card" id="analysis-card">
                     <p class="card-title">Contas</p>
-                    <p class="card-subtitle">Categoria com Maior Gasto</p>
+                    <p class="card-subtitle">Análise de Gastos</p>
+                </div>
+                <div class="card" id="analysis-ganhos-card">
+                    <p class="card-title">Ganhos</p>
+                    <p class="card-subtitle">Análise de Ganhos</p>
                 </div>
                 <div class="card">
-                    <p class="card-title">6 Registros</p>
+                    <p class="card-title" id="records-count">6 Registros</p>
                     <p class="card-subtitle">Entradas Deste Mês</p>
                 </div>
             </div>
             <button class="add-expense-button" id="openModalBtn">Adicionar Gasto</button>
         </section>
+        
         <section class="expenses-container">
             <h3>Meus Gastos</h3>
             <table class="expenses-table">
@@ -48,67 +55,46 @@
                     </tr>
                 </thead>
                 <tbody id="expenses-tbody">
-                    <tr>
-                        <td class="col-name">Restaurante</td>
-                        <td class="col-category">Alimentação</td>
-                        <td class="col-value">38,00</td>
-                        <td class="col-date">2025-09-08</td>
-                        <td class="actions">
-                            <button class="edit-btn">✏️</button>
-                            <button class="delete-btn">🗑️</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-name">Salário</td>
-                        <td class="col-category">Ganho</td>
-                        <td class="col-value income">+ 2850,00</td>
-                        <td class="col-date">2025-09-10</td>
-                        <td class="actions">
-                            <button class="edit-btn">✏️</button>
-                            <button class="delete-btn">🗑️</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-name">Aluguel</td>
-                        <td class="col-category">Contas</td>
-                        <td class="col-value">540,00</td>
-                        <td class="col-date">2025-09-10</td>
-                        <td class="actions">
-                            <button class="edit-btn">✏️</button>
-                            <button class="delete-btn">🗑️</button>
-                        </td>
-                    </tr>
+                    <tr data-type="gasto" data-value="38.00"><td class="col-name">Restaurante</td><td class="col-category">Alimentação</td><td class="col-value">38,00</td><td class="col-date">08/09</td><td class="actions"><button class="edit-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button><button class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></td></tr>
+                    <tr data-type="ganho" data-value="2850.00"><td class="col-name">Salário</td><td class="col-category">Ganho</td><td class="col-value income">+ 2.850,00</td><td class="col-date">10/09</td><td class="actions"><button class="edit-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button><button class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></td></tr>
+                    <tr data-type="gasto" data-value="540.00"><td class="col-name">Aluguel</td><td class="col-category">Contas</td><td class="col-value">540,00</td><td class="col-date">10/09</td><td class="actions"><button class="edit-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button><button class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></td></tr>
                 </tbody>
             </table>
         </section>
     </div>
+
     <div class="modal-overlay" id="addExpenseModal">
         <div class="modal-content">
-            <h3>Adicionar Gasto</h3>
+            <h3>Adicionar Gasto/Ganho</h3>
             <form id="addExpenseForm">
-                <div class="modal-form-group">
-                    <label for="g-nome">Nome</label>
-                    <input type="text" id="g-nome" required>
-                </div>
-                <div class="modal-form-group">
-                    <label for="g-cat">Categoria</label>
-                    <input type="text" id="g-cat" required>
-                </div>
-                <div class="modal-form-group">
-                    <label for="g-val">Valor</label>
-                    <input type="text" id="g-val" required>
-                </div>
-                <div class="modal-form-group">
-                    <label for="g-data">Data</label>
-                    <input type="date" id="g-data" required>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="modal-btn-cancel" id="closeModalBtn">Cancelar</button>
-                    <button type="submit" class="modal-btn-save">Salvar Gasto</button>
-                </div>
+                <div class="modal-form-group"><label for="g-tipo">Tipo</label><select id="g-tipo" name="tipo-transacao"><option value="gasto">Gasto</option><option value="ganho">Ganho</option></select></div>
+                <div class="modal-form-group"><label for="g-nome">Nome</label><input type="text" id="g-nome" required></div>
+                <div class="modal-form-group"><label for="g-cat">Categoria</label><input type="text" id="g-cat" required></div>
+                <div class="modal-form-group"><label for="g-val">Valor</label><input type="number" id="g-val" step="0.01" placeholder="Ex: 50.50" required></div>
+                <div class="modal-form-group"><label for="g-data">Data</label><input type="date" id="g-data" required></div>
+                <div class="modal-actions"><button type="button" class="modal-btn-cancel" id="closeModalBtn">Cancelar</button><button type="submit" class="modal-btn-save">Salvar</button></div>
             </form>
         </div>
     </div>
+
+    <div class="modal-overlay" id="analysisModal">
+        <div class="modal-content">
+            <h3>Análise de Gastos</h3>
+            <div class="analysis-controls"><button id="sort-desc-btn">Ordenar por Maior Valor</button><button id="sort-asc-btn">Ordenar por Menor Valor</button></div>
+            <ul id="analysis-list" class="analysis-list"></ul>
+            <div class="modal-actions"><button type="button" class="modal-btn-cancel" id="closeAnalysisModalBtn">Fechar</button></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="analysisGanhosModal">
+        <div class="modal-content">
+            <h3>Análise de Ganhos</h3>
+            <div class="analysis-controls"><button id="sort-ganhos-desc-btn">Ordenar por Maior Valor</button><button id="sort-ganhos-asc-btn">Ordenar por Menor Valor</button></div>
+            <ul id="analysis-ganhos-list" class="analysis-list"></ul>
+            <div class="modal-actions"><button type="button" class="modal-btn-cancel" id="closeAnalysisGanhosModalBtn">Fechar</button></div>
+        </div>
+    </div>
+    
     <script src="js/main.js"></script>
 </body>
 </html>
